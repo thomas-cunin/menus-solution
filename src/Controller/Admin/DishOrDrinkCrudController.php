@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Admin\Field\TinyMCEField;
 use App\Entity\DishOrDrink;
 use App\Form\PriceQuantityType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
@@ -53,6 +54,7 @@ class DishOrDrinkCrudController extends AbstractCrudController
                     'allow_add' => true,
                     'allow_delete' => true,
                 ]),
+
         ];
     }
 }

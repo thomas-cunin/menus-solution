@@ -1,0 +1,8 @@
+
+
+{# templates/admin/field/tinymce.html.twig #}
+
+<textarea id="{{ field.uniqueId }}" name="{{ field.property }}" class="tinymce-textarea">{{ field.value }}</textarea>
+
+
+{{ encore_entry_script_tags('tinymce-init') }}

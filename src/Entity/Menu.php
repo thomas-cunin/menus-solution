@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MenuRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
@@ -20,6 +21,9 @@ class Menu
 
     #[ORM\ManyToMany(targetEntity: DishOrDrink::class, inversedBy: 'menus')]
     private Collection $dishOrDrinks;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $content = null;
 
     public function __construct()
     {
@@ -63,6 +67,18 @@ class Menu
     public function removeDishOrDrink(DishOrDrink $dishOrDrink): static
     {
         $this->dishOrDrinks->removeElement($dishOrDrink);
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(?string $content): static
+    {
+        $this->content = $content;
 
         return $this;
     }
